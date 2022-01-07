@@ -6,8 +6,8 @@
 <div class='question-list' *ngIf='questionList.length > 0'>
     <section class='unanswered questions'>
         <h1>UNANSWERED QUESTIONS</h1>
-        <mat-card class="card unanswered-question-card" *ngFor="let question of questionList | filter:false | sort:'createdAt'">
-            <mat-card-title>{{question.question}}</mat-card-title>
+        <mat-card class="card unanswered-question-card" *ngFor="let question of questionList | filter:false | sort:'createdAt'; let i = index">
+            <mat-card-title>{{i+1}}. {{question.question}}</mat-card-title>
             <mat-card-content>
                <app-answer-style [question]='question' (answerChanged)='saveAnswer(question.id, $event)'></app-answer-style>
             </mat-card-content>
@@ -16,8 +16,8 @@
 
     <section class='answered questions'>
         <h1>ANSWERED QUESTIONS</h1>
-        <mat-card class="card answered-question-card" *ngFor="let question of questionList | filter:true | sort:'answeredAt'">
-            <mat-card-title>{{question.question}}</mat-card-title>
+        <mat-card class="card answered-question-card" *ngFor="let question of questionList | filter:true | sort:'answeredAt'; let i = index">
+            <mat-card-title>{{i+1}}. {{question.question}}</mat-card-title>
             <mat-card-content>
                <app-answer-style [question]='question'></app-answer-style>
             </mat-card-content>
