@@ -5,25 +5,35 @@
 
 <div class='question-list' *ngIf='questionList.length > 0'>
     <section class='unanswered questions'>
-        <h1>UNANSWERED QUESTIONS</h1>
-        <mat-card class="card unanswered-question-card" *ngFor="let question of questionList | filter:false | sort:'createdAt'; let i = index">
-            <mat-card-title>{{i+1}}. {{question.question}}</mat-card-title>
-            <mat-card-content>
-               <app-answer-style [question]='question' (answerChanged)='saveAnswer(question.id, $event)'></app-answer-style>
-            </mat-card-content>
-        </mat-card>
+        <h1 class="section-head">UNANSWERED QUESTIONS</h1>
+        <div class="cards">
+            <mat-card class="card unanswered-question-card" *ngFor="let question of questionList | filter:false | sort:'createdAt'; let i = index">
+                <mat-card-title>{{i+1}}. {{question.question}}</mat-card-title>
+                <mat-card-content>
+                   <app-answer-style [question]='question' (answerChanged)='saveAnswer(question.id, $event)'></app-answer-style>
+                </mat-card-content>
+            </mat-card>
+            <div class="no-question-left"  *ngIf="(questionList | filter:false).length == 0">
+                <h2>No question left to answer</h2>
+            </div>
+        </div>
     </section>
 
     <section class='answered questions'>
-        <h1>ANSWERED QUESTIONS</h1>
-        <mat-card class="card answered-question-card" *ngFor="let question of questionList | filter:true | sort:'answeredAt'; let i = index">
-            <mat-card-title>{{i+1}}. {{question.question}}</mat-card-title>
-            <mat-card-content>
-               <app-answer-style [question]='question'></app-answer-style>
-            </mat-card-content>
-            <mat-card-actions>
-              <button mat-button (click)='markUnanswered(question.id)'>Mark unanswered</button>
-            </mat-card-actions>
-        </mat-card>
+        <h1 class="section-head">ANSWERED QUESTIONS</h1>
+        <div class="cards">
+            <mat-card class="card answered-question-card" *ngFor="let question of questionList | filter:true | sort:'answeredAt'; let i = index">
+                <mat-card-title>{{i+1}}. {{question.question}}</mat-card-title>
+                <mat-card-content>
+                <app-answer-style [question]='question'></app-answer-style>
+                </mat-card-content>
+                <mat-card-actions>
+                <button mat-button (click)='markUnanswered(question.id)'>Mark unanswered</button>
+                </mat-card-actions>
+            </mat-card>
+            <div class="no-question-left"  *ngIf="(questionList | filter:true).length == 0">
+                <h2>No question answered yet</h2>
+            </div>
+        </div>
     </section>
 </div>

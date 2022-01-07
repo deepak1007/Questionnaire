@@ -6,7 +6,6 @@
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    padding: 10px;
 }
 
 
@@ -16,19 +15,28 @@
     flex: 1;
     flex-grow: 1;
     border: 1px solid rgb(228, 214, 214);
-    overflow: auto;
-    height: 80vh
+    /* overflow: auto; */
+    height: calc(100vh - 86px)
 }
 
+.cards{
+    position: relative;
+    overflow: auto;
+    height: 95%;
+}
 
 .card {
     margin: 10px;
 }
 
-
-h1 {
-    text-align: center;
+.no-question-left {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
+
+
 
 
 @media screen and (max-height: 900) {

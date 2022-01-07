@@ -1,3 +1,12 @@
+/* .section-head {
+    display: block;
+    position: fixed;
+    background: white;
+    padding: 15px;
+    z-index: 99;
+    width: 100%;
+} */
+
 .question-list-box {
     display: flex;
     width: 60%;
@@ -15,6 +24,8 @@
 .card-action-buttons button {
     margin: 4px;
 }
+
+
 
 mat-card-title {
     word-wrap: break-word;
