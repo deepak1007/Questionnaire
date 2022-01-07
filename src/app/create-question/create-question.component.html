@@ -1,100 +1,104 @@
-<mat-card class="example-card">
-    <h2 class='header'>{{action}} question</h2>
-    <mat-card-content>
-        <form [formGroup]="questionForm" (ngSubmit)="onSubmit()" novalidate class='form'>
-            <div class="form-group">
-                <mat-radio-group aria-label="Select an option"  formControlName="type">
-                    <mat-radio-button color='primary' value="single">Single</mat-radio-button>
-                    <mat-radio-button value="multiple">Multiple</mat-radio-button>
-                    <mat-radio-button value="open" >Open</mat-radio-button>
-                </mat-radio-group>
-                
-                <div class="errors" [hidden]='!submitted'>
-                    <span class="error" [hidden]='!typeControl.errors?.["required"]'>Please select an option</span>
-                </div>
-            </div>
-        
-        
-            <div class="form-group">
-                <mat-form-field appearance="fill">
-                    <mat-label>Question Text</mat-label>
-                    <textarea matInput formControlName='question'></textarea>
-                </mat-form-field>
-        
-                <div class="errors" [hidden]='!submitted'>
-                    <span class="error" [hidden]='!questionControl.errors?.["required"]'>Question is required</span>
-                </div>
-            </div>
-        
-        
-            <div class="form-group" *ngIf='typeControl.value != "open"'>
-                <div class="add-option-input">
-                    <mat-form-field class="example-full-width" appearance="fill">
-                        <mat-label>Add Option</mat-label>
-                        <input matInput formControlName='newOptionValue'>
-                    </mat-form-field>
+<section>
+    <mat-card class="example-card">
+        <h2 class='header'>{{action}} question</h2>
+        <mat-card-content>
+            <form [formGroup]="questionForm" (ngSubmit)="onSubmit()" novalidate class='form'>
+                <div class="form-group">
+                    <mat-radio-group aria-label="Select an option"  formControlName="type">
+                        <mat-radio-button color='primary' value="single">Single</mat-radio-button>
+                        <mat-radio-button value="multiple">Multiple</mat-radio-button>
+                        <mat-radio-button value="open" >Open</mat-radio-button>
+                    </mat-radio-group>
                     
-                    <button 
-                        mat-mini-fab 
-                        color="primary" 
-                        aria-label="Example icon button with a delete icon0" 
-                        (click)="addOption()"
-                        type='button'
-                    >Add</button>
+                    <div class="errors" [hidden]='!submitted'>
+                        <span class="error" [hidden]='!typeControl.errors?.["required"]'>Please select an option</span>
+                    </div>
                 </div>
             
-                <mat-list role="list" formArrayName='options'>
-                    <ng-container *ngFor='let option of optionsControl.controls; let i=index'>
-                        <mat-list-item role="listitem">
-                            <div class=" form-group item" >
-                                <span class="item-actions" [hidden]='focusedItem == i'>
-                                    <div class="option">
-                                        {{option.value}}
-                                    </div>
-                                    <div class="buttons">
-                                        <mat-icon 
-                                            color='accent'
+            
+                <div class="form-group">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Question Text</mat-label>
+                        <textarea matInput formControlName='question'></textarea>
+                    </mat-form-field>
+            
+                    <div class="errors" [hidden]='!submitted'>
+                        <span class="error" [hidden]='!questionControl.errors?.["required"]'>Question is required</span>
+                    </div>
+                </div>
+            
+            
+                <div class="form-group" *ngIf='typeControl.value != "open"'>
+                    <div class="add-option-input">
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Add Option</mat-label>
+                            <input matInput formControlName='newOptionValue'>
+                        </mat-form-field>
+                        
+                        <button 
+                            mat-mini-fab 
+                            color="primary" 
+                            aria-label="Example icon button with a delete icon0" 
+                            (click)="addOption()"
+                            type='button'
+                        >Add</button>
+                    </div>
+                
+                    <mat-list role="list" formArrayName='options'>
+                        <ng-container *ngFor='let option of optionsControl.controls; let i=index'>
+                            <mat-list-item role="listitem">
+                                <div class="form-group item" >
+                                    <span class="item-actions" [hidden]='focusedItem == i'>
+                                        <div class="option">
+                                            {{option.value}}
+                                        </div>
+                                        <div class="buttons">
+                                            <mat-icon 
+                                                color='accent'
+                                                aria-label="Example icon button with a delete icon0" 
+                                                class='closeInput' 
+                                                (click)='focusedItem = i' 
+                                                type='button'
+                                            >edit</mat-icon>
+                                            <mat-icon
+                                                color="warn" 
+                                                aria-label="Example icon button with a delete icon0" 
+                                                class='closeInput' 
+                                                (click)='deleteOption(i)' 
+                                                type='button'
+                                            >delete</mat-icon>
+                                        </div>
+                                    </span>
+            
+                                    <div class="edit" [hidden]='focusedItem != i'>
+                                        <input type="text" formControlName='{{i}}'>
+                                        <button 
+                                            mat-mini-fab 
+                                            color="primary" 
                                             aria-label="Example icon button with a delete icon0" 
                                             class='closeInput' 
-                                            (click)='focusedItem = i' 
+                                            (click)='focusedItem = -1'
                                             type='button'
-                                        >edit</mat-icon>
-                                        <mat-icon
-                                            color="warn" 
-                                            aria-label="Example icon button with a delete icon0" 
-                                            class='closeInput' 
-                                            (click)='deleteOption(i)' 
-                                            type='button'
-                                        >delete</mat-icon>
+                                        >Done</button>
                                     </div>
-                                </span>
-        
-                                <div class="edit" [hidden]='focusedItem != i'>
-                                    <input type="text" formControlName='{{i}}' >
-                                    <button 
-                                        mat-mini-fab 
-                                        color="primary" 
-                                        aria-label="Example icon button with a delete icon0" 
-                                        class='closeInput' 
-                                        (click)='focusedItem = -1'
-                                        type='button'
-                                    >Done</button>
                                 </div>
-                            </div>
-                        </mat-list-item>
-                    </ng-container>
-                </mat-list>
-            
-            
-                <div class="errors" [hidden]='!submitted'>
-                    <span class="error" [hidden]='!questionForm.errors?.["lessOptions"]'>Please enter atleast 2 options</span>
+                            </mat-list-item>
+                        </ng-container>
+                    </mat-list>
+                
+                
+                    <div class="errors" [hidden]='!submitted'>
+                        <span class="error" [hidden]='!questionForm.errors?.["lessOptions"]'>Please enter atleast 2 options</span>
+                    </div>
                 </div>
-            </div>
-        
-            <div class="buttons">
-                <button mat-button color="warn" type='submit'>Back To Manage</button>
-                <button mat-raised-button color="primary" type='submit'>Submit</button>
-            </div>
-        </form>        
-    </mat-card-content>
-</mat-card>
+            
+                <div class="buttons">
+                    <button mat-button color="warn" type='submit'>Back To Manage</button>
+                    <button mat-raised-button color="primary" type='submit'>Submit</button>
+                </div>
+            </form>        
+        </mat-card-content>
+    </mat-card>    
+</section>
+
+{{focusedItem}}

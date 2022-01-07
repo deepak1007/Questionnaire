@@ -7,13 +7,13 @@
         <mat-radio-button 
             class="example-radio-button" 
             *ngFor="let option of _answerOptions" 
+            color='primary'
             [value]="option"
             [disabled]='isReadOnly'
         >
             {{option}}
         </mat-radio-button>
     </mat-radio-group>
-    <div>selected answer is {{selectedAnswer}}</div>
 
 
     <button mat-raised-button color='primary' (click)="save()" *ngIf='selectedAnswer && !isReadOnly'>Save</button>

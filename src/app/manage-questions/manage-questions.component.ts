@@ -26,10 +26,9 @@ export class ManageQuestionsComponent implements OnInit {
 
   deleteQuestion(id: number) {
     this.ds.deleteQuestion(id)
-    this.questionList
-    .splice(
-      this.questionList.findIndex((question)=>{question.id == id}
-    ), 1);
+    const index  = this.questionList.findIndex((question)=> question.id == id);
+    if(index >= 0)
+      this.questionList.splice(index, 1);
   }
 
 }
