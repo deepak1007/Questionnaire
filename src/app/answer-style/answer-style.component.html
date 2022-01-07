@@ -1,0 +1,18 @@
+
+<app-single 
+    [question]='question' 
+    (answerChanged)='setAnswer($event)'
+    *ngIf='question?.type=="single"'></app-single>
+
+
+
+<app-multiple 
+    [question]='question'  
+    (answerChanged)='setAnswer($event)'
+    *ngIf='question?.type =="multiple"'></app-multiple>
+
+
+<app-open 
+    [question]='question'
+    (answerChanged)="setAnswer($event)"  
+    *ngIf='question?.type == "open"'></app-open>

@@ -1,0 +1,27 @@
+
+        <div class="question-list-box">
+            <h1 style='text-align: center'>Manage Questions</h1>
+            <mat-card class='question' *ngFor='let question of questionList | sort:"id":-1; let i = index'>
+                <mat-card-title>{{i+1}}. {{question.question}}</mat-card-title>
+                <mat-card-subtitle>{{question.type}} - {{question.createdAt | date:"medium" }}</mat-card-subtitle>
+                <mat-card-actions align="end" class='card-action-buttons'>
+                    <button 
+                        mat-mini-fab 
+                        color="accent" 
+                        aria-label="Example icon button with a menu icon"
+                        [routerLink]='["/question", "edit", question.id]'
+                    >
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                    <button 
+                        mat-mini-fab 
+                        color="warn" 
+                        aria-label="Example icon button with a menu icon" 
+                        (click)='deleteQuestion(question.id)'
+                    >
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+

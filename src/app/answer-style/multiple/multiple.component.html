@@ -1,0 +1,8 @@
+<form class="example-section" [formGroup]="selectOptionForm" (ngSubmit)='save()'>
+    <h4>Select answers</h4>
+    <p *ngFor='let option of _answerOptions'>
+        <mat-checkbox formControlName="{{option}}">{{option}}</mat-checkbox>
+    </p>
+
+    <button mat-raised-button color='primary' type='submit' *ngIf='selectOptionForm.status == "VALID" && !isReadOnly'>save</button>
+</form>
