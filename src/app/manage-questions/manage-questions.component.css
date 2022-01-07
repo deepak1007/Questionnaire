@@ -11,11 +11,10 @@
     margin-bottom: 10px;
 }
 
+
 .card-action-buttons button {
     margin: 4px;
 }
-
-
 
 mat-card-title {
     word-wrap: break-word;
