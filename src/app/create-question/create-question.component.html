@@ -46,6 +46,7 @@
                     </div>
                 
                     <mat-list role="list" formArrayName='options' cdkDropList (cdkDropListDropped)="drop($event)">
+                        <div mat-subheader *ngIf='optionsControl.controls.length > 0'>You can drag and drop these options to reorder</div>
                         <div *ngFor='let option of optionsControl.controls; let i=index' cdkDrag>
                             <mat-list-item role="listitem">
                                 <div class="form-group item" >
