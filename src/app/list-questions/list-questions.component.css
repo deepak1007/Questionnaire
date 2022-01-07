@@ -1,16 +1,21 @@
+* {
+    word-wrap: break-word;
+}
+
 .question-list {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
     padding: 10px;
+    height: 90vh;
 }
 
 
 .questions {
     padding:10px;
     min-width: 250px;
-    height: 80vh;
     flex: 1;
+    flex-grow: 1;
     border: 1px solid rgb(228, 214, 214);
     overflow: auto;
 }
@@ -24,3 +29,8 @@
 h1 {
     text-align: center;
 }
+
+
+@media screen and (min-height: 1400px) {
+    
+} 

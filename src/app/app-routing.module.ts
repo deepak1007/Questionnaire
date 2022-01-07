@@ -8,6 +8,7 @@ const routes: Routes = [
   { path: 'questions/list', component: ListQuestionsComponent},
   { path: 'question', loadChildren: () => import('./create-question/create-question.module').then(m => m.CreateQuestionModule) },
   { path: 'answer-style', loadChildren: () => import('./answer-style/answer-style.module').then(m => m.AnswerStyleModule) },
+  { path: '**', loadChildren: () => import('./page-not-found/page-not-found.module').then(m => m.PageNotFoundModule) },
 ];
 
 @NgModule({

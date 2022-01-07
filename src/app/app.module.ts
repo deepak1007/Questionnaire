@@ -16,13 +16,14 @@ import { SortPipe } from './pipes/sort.pipe';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import { MatProgressBarModule} from '@angular/material/progress-bar';
 @NgModule({
   declarations: [
     AppComponent,
     ManageQuestionsComponent,
     ListQuestionsComponent,
     FilterPipe,
-    SortPipe
+    SortPipe,
   ],
   imports: [
     BrowserModule,
@@ -35,7 +36,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     AnswerStyleModule,
     MatSidenavModule,
     MatToolbarModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

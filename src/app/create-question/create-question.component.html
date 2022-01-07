@@ -29,6 +29,7 @@
             
             
                 <div class="form-group" *ngIf='typeControl.value != "open"'>
+                    
                     <div class="add-option-input">
                         <mat-form-field class="example-full-width" appearance="fill">
                             <mat-label>Add Option</mat-label>
@@ -44,8 +45,8 @@
                         >Add</button>
                     </div>
                 
-                    <mat-list role="list" formArrayName='options'>
-                        <ng-container *ngFor='let option of optionsControl.controls; let i=index'>
+                    <mat-list role="list" formArrayName='options' cdkDropList (cdkDropListDropped)="drop($event)">
+                        <div *ngFor='let option of optionsControl.controls; let i=index' cdkDrag>
                             <mat-list-item role="listitem">
                                 <div class="form-group item" >
                                     <span class="item-actions" [hidden]='focusedItem == i'>
@@ -83,7 +84,7 @@
                                     </div>
                                 </div>
                             </mat-list-item>
-                        </ng-container>
+                        </div>
                     </mat-list>
                 
                 

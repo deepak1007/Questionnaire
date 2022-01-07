@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from '../services/data.service';
 import { ValidatorsService } from '../services/validators.service';
 import { Question } from '../services/data.model';
+import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 @Component({
   selector: 'app-create-question',
   templateUrl: './create-question.component.html',
@@ -131,6 +132,11 @@ export class CreateQuestionComponent implements OnInit {
 		this.optionsControl.controls.push(
 			...question.options.map((option)=> this.newOption(option))
 		)
+	}
+
+
+	drop(event: CdkDragDrop<string[]>) {
+		moveItemInArray(this.optionsControl.controls, event.previousIndex, event.currentIndex);
 	}
 
 
