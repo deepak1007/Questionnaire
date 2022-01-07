@@ -1,5 +1,5 @@
 <form class="example-form">
-    <mat-form-field class="example-full-width" appearance="fill">
+    <mat-form-field class="example-full-width" style='width: 100%' appearance="fill">
       <mat-label>Message</mat-label>
       <input 
         matInput  
@@ -8,7 +8,7 @@
         name='answer' 
         [(ngModel)]='answer' 
         [disabled]='isReadOnly'
-    >
+      >
       <mat-hint align="end">{{answer.length}} / 256</mat-hint>
     </mat-form-field>
     <button mat-raised-button color='primary' *ngIf='answer.length != 0 && !isReadOnly' (click)="save(answer)">Save</button>
