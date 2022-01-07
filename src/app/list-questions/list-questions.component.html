@@ -1,4 +1,9 @@
-<div class='question-list'>
+<div class="no-question-added" *ngIf='questionList.length == 0'>
+    <h2>No questions found! <a href="javascript:void(0)" routerLink='/question/create'>create one</a></h2>
+</div>
+
+
+<div class='question-list' *ngIf='questionList.length > 0'>
     <section class='unanswered questions'>
         <h1>UNANSWERED QUESTIONS</h1>
         <mat-card class="card unanswered-question-card" *ngFor="let question of questionList | filter:false | sort:'createdAt'">

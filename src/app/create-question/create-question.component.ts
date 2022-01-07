@@ -81,8 +81,18 @@ export class CreateQuestionComponent implements OnInit {
 		return this.fb.control(value);
 	}
 
+	editOption(index: number) {
+		if(this.questionForm.get('answered').value) {
+			return alert('Cannot edit option as this question is marked answered.')
+		}
+		this.focusedItem = index;
+	}
+
 
 	deleteOption(i : number) {
+		if(this.questionForm.get('answered').value) {
+			return alert('Cannot delete option as this question is marked answered.')
+		}
 		this.optionsControl.controls.splice(i, 1);
 	}
 

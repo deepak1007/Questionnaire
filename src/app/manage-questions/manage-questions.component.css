@@ -15,9 +15,14 @@
     margin: 4px;
 }
 
-.no-question-added {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+
+
+mat-card-title {
+    word-wrap: break-word;
+}
+
+@media screen and (max-width : 900px) {
+    .question-list-box {
+        width: 90%
+    }
 }
