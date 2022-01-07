@@ -13,8 +13,7 @@
         >
             {{option}}
         </mat-radio-button>
+        <button mat-raised-button style='margin: 10px' color='primary' (click)="save()" *ngIf='selectedAnswer && !isReadOnly'>Save</button>
     </mat-radio-group>
 
-
-    <button mat-raised-button color='primary' (click)="save()" *ngIf='selectedAnswer && !isReadOnly'>Save</button>
 </div>
