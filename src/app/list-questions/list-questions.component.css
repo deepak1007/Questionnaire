@@ -10,11 +10,15 @@
 .questions {
     padding:10px;
     flex: 1;
-    border: 1px solid rgb(0, 0, 0);
+    border: 1px solid rgb(195, 191, 191);
     height: calc(100vh - 86px) !important;
+    background: whitesmoke;
 }
 
-
+.section-head {
+    font-weight: bold;
+    padding: 10px;
+}
 
 .cards{
     position: relative;
@@ -58,7 +62,7 @@ mat-card-title {
     }
 
     .cards {
-        min-height: 90vh
+        min-height: 15vh
     }
 
 
@@ -66,7 +70,7 @@ mat-card-title {
         display: block;
         position: fixed;
         bottom: 10px;
-        right: 10px;
+        right: 20px;
         z-index: 99;
         display: flex;
         flex-direction: column;
