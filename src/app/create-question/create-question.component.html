@@ -42,7 +42,8 @@
                             aria-label="Example icon button with a delete icon0" 
                             (click)="addOption()"
                             type='button'
-                        >Add</button>
+                            style='margin-bottom:12px'
+                        ><mat-icon>keyboard_arrow_right</mat-icon></button>
                     </div>
                 
                     <mat-list role="list" formArrayName='options' cdkDropList (cdkDropListDropped)="drop($event)">
