@@ -4,6 +4,9 @@
     color : red
 }
 
+input, textarea, mat-radio-button {
+    font-size: 18px;
+}
 
 section {
     display: flex;
