@@ -2,7 +2,12 @@
     margin: 12px 0;
 }
 
+label {
+    font-size: 20px;
+}
+
 mat-radio-button {
     width: 100%;
-    padding: 8px;
+    padding: 8px 0px;
+    font-size: 16px;
 }

@@ -7,9 +7,9 @@ export class QuestionTypeSymbolPipe implements PipeTransform {
 
   transform(type: string, ...args: unknown[]): string {
     const questionTypeSymbols = {
-      single : "assets/images/bandmember.jpg",
-      open : "assets/images/bandmember.jpg",
-      multiple : "assets/images/bandmember.jpg",
+      single : "assets/images/checkbox.png",
+      open : "assets/images/text-input-icon.jpg",
+      multiple : "assets/images/radio-on-button.png",
     }
 
     return questionTypeSymbols[type as "single" | "open" | "multiple"];

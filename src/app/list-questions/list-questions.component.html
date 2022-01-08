@@ -4,7 +4,7 @@
 
 
 <div class='question-list' *ngIf='questionList.length > 0'>
-    <section class='unanswered questions'>
+    <section class='unanswered questions' id="unanswered">
         <h1 class="section-head">UNANSWERED QUESTIONS</h1>
         <div class="cards">
             <mat-card class="card unanswered-question-card" *ngFor="let question of questionList | filter:false | sort:'createdAt'; let i = index">
@@ -13,13 +13,13 @@
                    <app-answer-style [question]='question' (answerChanged)='saveAnswer(question.id, $event)'></app-answer-style>
                 </mat-card-content>
             </mat-card>
-            <div class="no-question-left"  *ngIf="(questionList | filter:false).length == 0">
+            <div class="no-question-left"  [hidden]="(questionList | filter:false).length > 0">
                 <h2>No question left to answer</h2>
             </div>
         </div>
     </section>
 
-    <section class='answered questions'>
+    <section class='answered questions' id="answered">
         <h1 class="section-head">ANSWERED QUESTIONS</h1>
         <div class="cards">
             <mat-card class="card answered-question-card" *ngFor="let question of questionList | filter:true | sort:'answeredAt'; let i = index">
@@ -31,9 +31,30 @@
                 <button mat-button (click)='markUnanswered(question.id)'>Mark unanswered</button>
                 </mat-card-actions>
             </mat-card>
-            <div class="no-question-left"  *ngIf="(questionList | filter:true).length == 0">
+            <div class="no-question-left"  [hidden]="(questionList | filter:true).length > 0">
                 <h2>No question answered yet</h2>
             </div>
         </div>
     </section>
+</div>
+
+
+<div class="navigate-buttons">
+    <button 
+    mat-mini-fab 
+    color='primary'  
+    routerLink='/questions/list' 
+    fragment='unanswered' 
+    (click)="onAnchorClick()">
+        <mat-icon>keyboard_arrow_up</mat-icon>
+    </button>
+
+    <button 
+    mat-mini-fab 
+    color='primary' 
+    routerLink='/questions/list' 
+    fragment='answered' 
+    (click)="onAnchorClick()">
+        <mat-icon>keyboard_arrow_down</mat-icon>
+    </button>
 </div>

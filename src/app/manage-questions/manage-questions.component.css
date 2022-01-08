@@ -1,9 +1,4 @@
 
-* {
-    word-wrap: break-word;
-}
-
-
 .question-list-box {
     display: flex;
     width: 60%;

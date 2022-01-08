@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Question } from '../services/data.model';
 import { DataService } from '../services/data.service';
 
@@ -13,7 +13,8 @@ export class ListQuestionsComponent implements OnInit {
 
 	constructor(
 		private ds : DataService,
-		private router: Router
+		private router: Router,
+		private route : ActivatedRoute
 	) { }
 
 	ngOnInit(): void {
@@ -53,5 +54,13 @@ export class ListQuestionsComponent implements OnInit {
 			return question
 		});
 		this.ds.saveToLocalStorage(this.questionList);
+	}
+
+
+	onAnchorClick ( ) {
+		this.route.fragment.subscribe ( f => {
+		  const element = document.querySelector ( "#" + f )
+		  if ( element ) element.scrollIntoView ( {behavior: "smooth", block: "start", inline: "nearest"})
+		});
 	}
 }
