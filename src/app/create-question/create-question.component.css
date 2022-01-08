@@ -1,6 +1,8 @@
-[hidden] {
-    display:none !important;
+
+.error  {
+    color : red
 }
+
 
 section {
     display: flex;
@@ -9,9 +11,10 @@ section {
     padding: 10px;
 }
 
+
 .example-card {
     width: 400px;
-    max-height: 80vh
+    max-height: 80vh;
 }
   
 
@@ -22,25 +25,24 @@ section {
     flex-basis: auto;
 }
 
-.error  {
-    color : red
-}
-
 
 .form-group{
     width: 100%;
     padding:12px 5px;
 }
 
-
 .item-actions {
     display: flex;
     justify-content: space-between;
 }
 
+
 .header {
     text-transform: capitalize;
+    text-align: center;
 }
+
+
 
 .add-option-input, .edit{
     display: flex;
@@ -50,18 +52,28 @@ section {
 
 .edit input {
     flex: 1;
+    min-width: 30px;
     font-size: 16px;
     margin-right: 5px;
 }
 
+
 mat-list {
     max-height: 18vh;
     overflow-y: auto;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
+
 
 mat-radio-group {
     display: flex;
+    flex-wrap : wrap;
     justify-content: space-between;
+}
+
+mat-radio-group mat-radio-button {
+    margin: 5px 2px;
 }
 
 mat-form-field {
@@ -101,8 +113,21 @@ mat-form-field {
     transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
   }
 
+
 @media screen and (max-width : 850px) {
     .example-card {
         width: 90%;
+    }
+}
+
+
+@media (pointer: coarse) {
+    .example-card {
+        max-height: unset;
+    }
+
+    mat-list {
+        max-height: unset;
+        overflow: unset;
     }
 }

@@ -7,6 +7,7 @@ import { Question } from '../services/data.model';
 })
 export class DataService {
   dbName: string = "QUESTIONS";
+  // const questionTypes : QuestionTypes[];
 
   constructor() { }
 

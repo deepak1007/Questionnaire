@@ -6,11 +6,18 @@
 
 
         <div class="question-list-box" *ngIf='questionList.length > 0'>
-            <h1 class='section-head'>Manage Questions (Total {{questionList.length}})</h1>
-            <mat-card class='question' *ngFor='let question of questionList | sort:"id":-1; let i = index'>
-                <mat-card-title>{{i+1}}. {{question.question}}</mat-card-title>
-                <mat-card-subtitle>{{question.type}} - {{question.createdAt | date:"medium" }}</mat-card-subtitle>
-                <mat-card-actions align="end" class='card-action-buttons'>
+            <h1 class='section-head'>Manage Questions <span class='totalQuestions'>(Total {{questionList.length}})</span></h1>
+            <div class="container" *ngFor='let question of questionList | sort:"id":-1; let i = index'>
+                <div class="content">
+                    <img src="{{question.type | questionTypeSymbol}}" alt="Avatar" style="width:90px">
+                    <div class="text">
+                        <p><span>{{i+1}}. {{question.question}} nach meri randi how are you randi nach meri randi please please naach meri randi</span></p>
+                        <p>
+                            <span>{{question.type}} - {{question.createdAt | date:"medium" }}</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="action-buttons">
                     <button 
                         mat-mini-fab 
                         color="accent" 
@@ -27,7 +34,7 @@
                     >
                         <mat-icon>delete</mat-icon>
                     </button>
-                </mat-card-actions>
-            </mat-card>
+                </div>
+            </div>
         </div>
 

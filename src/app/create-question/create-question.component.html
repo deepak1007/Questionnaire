@@ -2,12 +2,12 @@
     <mat-card class="example-card">
         <h2 class='header'>{{action}} question</h2>
         <mat-card-content>
-            <form [formGroup]="questionForm" (ngSubmit)="onSubmit()" novalidate class='form'>
+            <form [formGroup]="questionForm" (ngSubmit)="onSubmit()"  novalidate class='form'>
                 <div class="form-group">
                     <mat-radio-group aria-label="Select an option"  formControlName="type">
                         <mat-radio-button color='primary' value="single">Single</mat-radio-button>
-                        <mat-radio-button value="multiple">Multiple</mat-radio-button>
-                        <mat-radio-button value="open" >Open</mat-radio-button>
+                        <mat-radio-button color='primary' value="multiple">Multiple</mat-radio-button>
+                        <mat-radio-button color='primary' value="open" >Open</mat-radio-button>
                     </mat-radio-group>
                     
                     <div class="errors" [hidden]='!submitted'>
@@ -33,7 +33,7 @@
                     <div class="add-option-input">
                         <mat-form-field class="example-full-width" appearance="fill">
                             <mat-label>Add Option</mat-label>
-                            <input matInput formControlName='newOptionValue'>
+                            <input matInput formControlName='newOptionValue' (keydown.enter)='$event.stopPropagation(); $event.preventDefault(); addOption()'>
                         </mat-form-field>
                         
                         <button 
@@ -73,7 +73,7 @@
                                     </span>
             
                                     <div class="edit" [hidden]='focusedItem != i'>
-                                        <input type="text" formControlName='{{i}}'>
+                                        <input type="text" formControlName='{{i}}' (keydown.enter)='$event.stopPropagation(); $event.preventDefault(); focusedItem = -1'>
                                         <button 
                                             mat-mini-fab 
                                             color="primary" 
@@ -94,7 +94,7 @@
                     </div>
                 </div>
             
-                <div class="buttons">
+                <div class="form-buttons">
                     <button mat-button color="warn" type='button' routerLink='/'>Back To Manage</button>
                     <button mat-raised-button color="primary" type='submit'>Submit</button>
                 </div>

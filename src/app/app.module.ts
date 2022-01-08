@@ -17,6 +17,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { MatProgressBarModule} from '@angular/material/progress-bar';
+import { QuestionTypeSymbolPipe } from './pipes/question-type-symbol.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,6 +25,7 @@ import { MatProgressBarModule} from '@angular/material/progress-bar';
     ListQuestionsComponent,
     FilterPipe,
     SortPipe,
+    QuestionTypeSymbolPipe,
   ],
   imports: [
     BrowserModule,
