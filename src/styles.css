@@ -3,7 +3,7 @@
     word-break: break-word;
 }
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;background:whitesmoke  }
 
 
 .no-question-added {
@@ -15,6 +15,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .section-head {
     text-align: center;
+    font-weight: bold !important;
+    padding: 10px;
 }
 
 a {
