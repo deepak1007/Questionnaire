@@ -121,6 +121,9 @@ export class CreateQuestionComponent implements OnInit {
 
 
 	saveQuestion() {
+		if(this.questionForm.get('answered').value) {
+			return alert('Cannot edit this question as it is marked answered.')
+		}
 		this.ds.saveQuestion(this.questionForm.getRawValue());
 		this.router.navigate(['/'])
 	}
