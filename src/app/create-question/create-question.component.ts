@@ -52,7 +52,7 @@ export class CreateQuestionComponent implements OnInit {
 		const questionId : number = Number(this.ar.snapshot.paramMap.get('questionId'));
 		if(isNaN(questionId)) {
 			alert('invalid questionId');
-			this.router.navigate(['/questions/manage']);
+			this.router.navigate(['/']);
 			return;
 		}
 		this.questionId = questionId;
@@ -60,7 +60,7 @@ export class CreateQuestionComponent implements OnInit {
 		const fetchedQuestion : Question = this.getQuestion(this.questionId);
 		if(!fetchedQuestion) { 
 			alert('question doesn\'t extist')
-			this.router.navigate(['/question/create']);
+			this.router.navigate(['/']);
 		}
 		this.patchForm(fetchedQuestion);
 	}
@@ -94,7 +94,7 @@ export class CreateQuestionComponent implements OnInit {
 		if(this.questionForm.get('answered').value) {
 			return alert('Cannot delete option as this question is marked answered.')
 		}
-		this.optionsControl.controls.splice(i, 1);
+		this.optionsControl.removeAt(i);
 	}
 
 
